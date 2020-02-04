@@ -11,5 +11,10 @@
 
     <artifactId>SoundEngine</artifactId>
 
+    <properties>
+        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+    </properties>
 
 </project>
