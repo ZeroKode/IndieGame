@@ -20,6 +20,26 @@ public class Point2D {
     }
 
     /**
+     * Adds the number of pixels to the X-axis.
+     * @param pixels - positive or negative integer
+     * @return the current object modified
+     */
+    public Point2D addX(int pixels){
+        x += pixels;
+        return this;
+    }
+
+    /**
+     * Adds the number of pixels to the Y-axis.
+     * @param pixels - positive or negative integer
+     * @return the current object modified
+     */
+    public Point2D addY(int pixels){
+        y += pixels;
+        return this;
+    }
+
+    /**
      * The Pivot Point is the lower left corner of a 2D plane.
      *
      * @param x - number of pixels in the horizontal plane, should be positive.
@@ -34,5 +54,13 @@ public class Point2D {
         if (x < 0 || y < 0) {
             throw new PointOutOfBoundsException(x, y);
         }
+    }
+
+    /**
+     * Used to avoid modifying the original point when using the addX and addY methods.
+     * @return a new instance using the same x and y values.
+     */
+    public Point2D copy() {
+        return new Point2D(x, y);
     }
 }
