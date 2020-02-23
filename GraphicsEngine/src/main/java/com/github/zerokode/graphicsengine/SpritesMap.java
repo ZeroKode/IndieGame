@@ -39,15 +39,15 @@ public class SpritesMap {
     }
 
     /**
-     * Allows you to get a sprite the same way you would crop a small fragment of a larger image.
+     * Allows you to create a sprite the same way you would crop a small fragment of a larger image.
      *
      * @param origin - the start point in a 2D selection (top left corner)
      * @param width - in pixels
      * @param height - in pixels
-     * @return a Sprite instance
+     * @return a new Sprite instance
      * @throws PointOutOfBoundsException when one of the points is not valid
      */
-    public Sprite getSprite(@NonNull Point2D origin, int width, int height) throws PointOutOfBoundsException {
+    public Sprite createSprite(@NonNull Point2D origin, int width, int height) throws PointOutOfBoundsException {
         return Sprite.create(this, origin, width, height);
     }
 
