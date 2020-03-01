@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class TopDownRoom extends Room {
+public class DungeonRoom extends Room {
 
     public static final String FLOOR = "floor";
     public static final String FLOOR_MARKS = "floorMarks";
@@ -21,7 +21,7 @@ public class TopDownRoom extends Room {
      * Use one of the factory methods available to create a new instance.
      * @param layers
      */
-    private TopDownRoom(List<Layer> layers) {
+    private DungeonRoom(List<Layer> layers) {
         super(layers);
     }
 
@@ -30,11 +30,11 @@ public class TopDownRoom extends Room {
      * @param cellsTall
      * @param cellsWide
      */
-    public static TopDownRoom createEmptyRoom(int cellsWide, int cellsTall) {
+    public static DungeonRoom createEmptyRoom(int cellsWide, int cellsTall) {
         List<Layer> layers = Stream.of(FLOOR, FLOOR_MARKS, WALLS, ROOM_OBJECTS, CHARACTERS, PARTICLES, SKY)
                 .map(layerName -> new Layer(layerName, cellsWide, cellsTall))
                 .collect(Collectors.toList());
-        return new TopDownRoom(layers);
+        return new DungeonRoom(layers);
     }
 
 }
