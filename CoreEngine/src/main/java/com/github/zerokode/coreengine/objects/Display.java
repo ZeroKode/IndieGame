@@ -1,7 +1,8 @@
 package com.github.zerokode.coreengine.objects;
 
 import com.github.zerokode.coreengine.exceptions.OrientationNotAllowedException;
-import com.github.zerokode.coreengine.objects.location.Orientation;
+import com.github.zerokode.coreengine.objects.metrics.Orientation;
+import com.github.zerokode.coreengine.objects.metrics.Resolution;
 import lombok.Data;
 
 import java.util.Collections;
@@ -21,7 +22,7 @@ public class Display {
         super();
         this.orientation = Orientation.LANDSCAPE;
         this.allowedOrientations = Collections.singletonList(Orientation.LANDSCAPE);
-        this.resolution = Resolution.create(1280, 720);
+        this.resolution = new Resolution(1280, 720);
     }
 
     /**
@@ -34,7 +35,7 @@ public class Display {
         super();
         this.orientation = defaultOrientation;
         this.allowedOrientations = Collections.singletonList(defaultOrientation);
-        this.resolution = Resolution.create(1280, 720);
+        this.resolution = new Resolution(1280, 720);
     }
 
     /**
@@ -77,33 +78,4 @@ public class Display {
         }
     }
 
-}
-
-@Data
-class Resolution {
-    private int width; // in pixels
-    private int height; // in pixels
-
-    private Resolution(){
-        super();
-    }
-
-    /**
-     *
-     * @param width - in pixels
-     * @param height - in pixels
-     * @return a new instance
-     */
-    public static Resolution create(int width, int height) {
-        Resolution resolution = new Resolution();
-        resolution.setHeight(height);
-        resolution.setWidth(width);
-        return resolution;
-    }
-
-    public void toggle() {
-        final int h = this.height;
-        this.height = this.width;
-        this.width = h;
-    }
 }

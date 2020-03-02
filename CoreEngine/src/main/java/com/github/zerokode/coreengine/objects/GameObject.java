@@ -2,7 +2,6 @@ package com.github.zerokode.coreengine.objects;
 
 import com.github.zerokode.coreengine.exceptions.AttributeNotFoundException;
 import com.github.zerokode.coreengine.objects.attributes.Attribute;
-import com.github.zerokode.coreengine.objects.attributes.Drawable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,7 @@ import java.util.HashSet;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GameObject {
+public abstract class GameObject {
 
     private HashSet<Attribute> attributes = new HashSet<>();
 
@@ -29,15 +28,15 @@ public class GameObject {
         attributes.remove(attribute);
     }
 
-    public int getWidthInMm() {
-        Attribute found = findAttribute(Drawable.class, new Drawable(0, 0));
-        return ((Drawable)found).getWidthInMm();
-    }
+    /**
+     * @return - the object's width in pixels
+     */
+    public abstract int getWidth();
 
-    public int getHeightInMm() {
-        Attribute found = findAttribute(Drawable.class, new Drawable(0, 0));
-        return ((Drawable)found).getHeightInMm();
-    }
+    /**
+     * @return - the object's height in pixels
+     */
+    public abstract int getHeight();
 
     /**
      * Looks for an attribute of the given type since there can only be one or none.

@@ -1,6 +1,6 @@
 package com.github.zerokode.exceptions;
 
-import com.github.zerokode.objects.attributes.Attribute;
+import com.github.zerokode.coreengine.objects.attributes.Attribute;
 
 public class AttributeNotFoundException extends Exception {
 

@@ -1,7 +1,7 @@
-package com.github.zerokode.graphicsengine.exception;
+package com.github.zerokode.coreengine.exceptions;
 
-import com.github.zerokode.graphicsengine.Dimension2D;
-import com.github.zerokode.graphicsengine.Point2D;
+import com.github.zerokode.coreengine.objects.metrics.Dimension;
+import com.github.zerokode.coreengine.objects.metrics.Point2D;
 
 public class PointOutOfBoundsException extends Exception {
 
@@ -13,7 +13,7 @@ public class PointOutOfBoundsException extends Exception {
         super(getMessage(point.getX(), point.getY()));
     }
 
-    public PointOutOfBoundsException(Point2D point, Dimension2D dimension) {
+    public PointOutOfBoundsException(Point2D point, Dimension dimension) {
         super("Point2D (" + point.getY() + ", " + point.getY() + ") falls outside of the 2D plane " +
                 "defined as width=" + dimension.getWidth() + " and height=" + dimension.getHeight() + ".");
     }

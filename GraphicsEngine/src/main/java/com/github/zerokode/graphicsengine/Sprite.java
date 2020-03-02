@@ -1,6 +1,8 @@
 package com.github.zerokode.graphicsengine;
 
-import com.github.zerokode.graphicsengine.exception.PointOutOfBoundsException;
+import com.github.zerokode.coreengine.exceptions.PointOutOfBoundsException;
+import com.github.zerokode.coreengine.objects.metrics.Dimension;
+import com.github.zerokode.coreengine.objects.metrics.Point2D;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -13,8 +15,7 @@ public class Sprite {
 
     private SpritesMap spritesMap;
     private Point2D origin;
-    private int width;
-    private int height;
+    private Dimension dimension;
 
     /**
      * A Sprite is a 2D fragment of a typically larger image containing multiple sprites.
@@ -27,8 +28,7 @@ public class Sprite {
     private Sprite(SpritesMap spritesMap, Point2D origin, int width, int height) {
         this.spritesMap = spritesMap;
         this.origin = origin;
-        this.width = width;
-        this.height = height;
+        this.dimension = new Dimension(width, height);
     }
 
     /**
@@ -105,7 +105,7 @@ public class Sprite {
      *                                   the boundaries of the image.
      */
     private static Sprite crop(@NonNull SpritesMap spritesMap, @NonNull Point2D origin, int width, int height) throws PointOutOfBoundsException {
-        Point2D lowerRightCorner = Point2D.create(origin.getX() + width, origin.getY() + height);
+        Point2D lowerRightCorner = new Point2D(origin.getX() + width, origin.getY() + height);
         if (!spritesMap.canContain(lowerRightCorner)) {
             throw new PointOutOfBoundsException(lowerRightCorner, spritesMap.getDimension());
         }
@@ -133,6 +133,6 @@ public class Sprite {
      * @return A BufferedImage representing the sprite.
      */
     public BufferedImage getImage() {
-        return spritesMap.getImage().getSubimage(origin.getX(), origin.getY(), width, height);
+        return spritesMap.getImage().getSubimage(origin.getX(), origin.getY(), dimension.getWidth(), dimension.getHeight());
     }
 }

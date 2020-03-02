@@ -1,10 +1,12 @@
 package com.github.zerokode.coreengine.objects.room;
 
-import com.github.zerokode.coreengine.objects.room.layers.Layer;
 import com.github.zerokode.coreengine.exceptions.LayerNotFoundException;
+import com.github.zerokode.coreengine.objects.room.doors.Door;
+import com.github.zerokode.coreengine.objects.room.layers.Layer;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * A room has multiple layers, each one containing multiple objects.
@@ -15,14 +17,18 @@ import java.util.List;
 @Getter
 public abstract class Room {
 
+    private String id;
     private List<Layer> layers;
+    private Set<Door> doors;
 
-    public Room(List<Layer> layers) {
+    public Room(String roomId, List<Layer> layers) {
         this.layers = layers;
+        this.id = roomId;
     }
 
     /**
      * Finds a layer by name.
+     *
      * @param layerName - case sensitive
      * @return the layer that has the given name.
      * @throws LayerNotFoundException when none has been found.
@@ -32,4 +38,16 @@ public abstract class Room {
                 .orElseThrow(() -> new LayerNotFoundException(layerName));
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Room) {
+            return this.getId().equalsIgnoreCase(((Room) obj).getId());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

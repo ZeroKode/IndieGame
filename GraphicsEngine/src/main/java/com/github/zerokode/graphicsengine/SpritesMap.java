@@ -1,6 +1,8 @@
 package com.github.zerokode.graphicsengine;
 
-import com.github.zerokode.graphicsengine.exception.PointOutOfBoundsException;
+import com.github.zerokode.coreengine.exceptions.PointOutOfBoundsException;
+import com.github.zerokode.coreengine.objects.metrics.Dimension;
+import com.github.zerokode.coreengine.objects.metrics.Point2D;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -10,7 +12,7 @@ import java.util.List;
 @Getter
 public class SpritesMap {
 
-    private Dimension2D dimension;
+    private Dimension dimension;
     private BufferedImage image;
 
     /**
@@ -23,7 +25,7 @@ public class SpritesMap {
      */
     private SpritesMap(BufferedImage image) {
         this.image = image;
-        this.dimension = new Dimension2D(image.getWidth(), image.getHeight());
+        this.dimension = new Dimension(image.getWidth(), image.getHeight());
     }
 
     /**
@@ -53,13 +55,12 @@ public class SpritesMap {
      * Allows you to read a sprite from the whole sprite's map.
      *
      * @param origin       - the start point in a 2D selection (top left corner)
-     * @param spriteWidth  - in pixels
-     * @param spriteHeight - in pixels
+     * @param dimension    - indicates the width and height of the sprite in pixels
      * @return a new Sprite instance
      * @throws PointOutOfBoundsException when one of the points is not valid
      */
-    public Sprite readOne(@NonNull Point2D origin, int spriteWidth, int spriteHeight) throws PointOutOfBoundsException {
-        return Sprite.readOne(this, origin, spriteWidth, spriteHeight);
+    public Sprite readOne(@NonNull Point2D origin, @NonNull Dimension dimension) throws PointOutOfBoundsException {
+        return Sprite.readOne(this, origin, dimension.getWidth(), dimension.getHeight());
     }
 
     /**
