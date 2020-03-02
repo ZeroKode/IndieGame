@@ -21,20 +21,21 @@ public class DungeonRoom extends Room {
      * Use one of the factory methods available to create a new instance.
      * @param layers
      */
-    private DungeonRoom(List<Layer> layers) {
-        super(layers);
+    private DungeonRoom(String id, List<Layer> layers) {
+        super(id, layers);
     }
 
     /**
      * A room with all 7 layers. All layers are the indicated size and will be empty.
-     * @param cellsTall
-     * @param cellsWide
+     * @param id - unique id for this room (it could be a random UUID or any other value)
+     * @param cellsTall - height in cells (each cell is 1 x 1 meters)
+     * @param cellsWide - width in cells (each cell is 1 x 1 meters)
      */
-    public static DungeonRoom createEmptyRoom(int cellsWide, int cellsTall) {
+    public static DungeonRoom createEmptyRoom(String id, int cellsWide, int cellsTall, int cellSizeInPixels) {
         List<Layer> layers = Stream.of(FLOOR, FLOOR_MARKS, WALLS, ROOM_OBJECTS, CHARACTERS, PARTICLES, SKY)
-                .map(layerName -> new Layer(layerName, cellsWide, cellsTall))
+                .map(layerName -> new Layer(layerName, cellsWide, cellsTall, cellSizeInPixels))
                 .collect(Collectors.toList());
-        return new DungeonRoom(layers);
+        return new DungeonRoom(id, layers);
     }
 
 }

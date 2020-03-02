@@ -7,8 +7,8 @@ public class Layer extends Grid {
 
     private String layerName;
 
-    public Layer(String layerName, int cellsWide, int cellsTall) {
-        super(cellsWide, cellsTall);
+    public Layer(String layerName, int cellsWide, int cellsTall, int cellsSizeInPixels) {
+        super(cellsWide, cellsTall, cellsSizeInPixels);
         this.layerName = layerName;
     }
 

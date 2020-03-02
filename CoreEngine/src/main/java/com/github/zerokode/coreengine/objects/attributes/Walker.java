@@ -1,6 +1,6 @@
 package com.github.zerokode.coreengine.objects.attributes;
 
-import com.github.zerokode.coreengine.objects.location.Direction;
+import com.github.zerokode.coreengine.objects.metrics.Direction;
 
 /**
  * A walking object will collide with objects placed on the map, holes in the ground and enemies.

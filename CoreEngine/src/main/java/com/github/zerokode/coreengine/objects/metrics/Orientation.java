@@ -1,4 +1,4 @@
-package com.github.zerokode.coreengine.objects.location;
+package com.github.zerokode.coreengine.objects.metrics;
 
 public enum Orientation {
 

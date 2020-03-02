@@ -1,6 +1,6 @@
 package com.github.zerokode.coreengine.objects.attributes;
 
-import com.github.zerokode.coreengine.objects.location.Direction;
+import com.github.zerokode.coreengine.objects.metrics.Direction;
 
 /**
  * A flying object can't collide with objects placed on the map or holes in the ground,

@@ -1,5 +1,9 @@
 package com.github.zerokode.objects.attributes;
 
+import com.github.zerokode.coreengine.objects.attributes.Breakable;
+import com.github.zerokode.coreengine.objects.attributes.Flying;
+import com.github.zerokode.coreengine.objects.attributes.Movable;
+import com.github.zerokode.coreengine.objects.attributes.Walker;
 import org.junit.Assert;
 import org.junit.Test;
 
